@@ -34,7 +34,8 @@ jobs:
           - 6379:6379
     env:
       SQLX_VERSION: 0.5.11
-      SQLX_FEATURES: postgres
+      SQLX_FEATURE_NATIVE_TLS: native-tls
+      SQLX_FEATURE_POSTGRES: postgres
     steps:
       - name: Checkout repository
         uses: actions/checkout@v2
@@ -63,7 +64,7 @@ jobs:
           path: |
             ~/.cargo/bin/sqlx
             ~/.cargo/bin/cargo-sqlx
-          key: ${{ runner.os }}-sqlx-${{ env.SQLX_VERSION }}-${{ env.SQLX_FEATURES }}
+          key: ${{ runner.os }}-sqlx-${{ env.SQLX_VERSION }}-${{ env.SQLX_FEATURE_POSTGRES }}-${{ env.SQLX_FEATURE_NATIVE_TLS }}
 
       - name: Install sqlx-cli 
         uses: actions-rs/cargo@v1
@@ -74,7 +75,7 @@ jobs:
             sqlx-cli
             --force
             --version=${{ env.SQLX_VERSION }}
-            --features=${{ env.SQLX_FEATURES }}
+            --features=${{ env.SQLX_FEATURE_NATIVE_TLS }},${{ env.SQLX_FEATURE_POSTGRES }}
             --no-default-features
             --locked
       - name: Migrate database
@@ -118,7 +119,8 @@ jobs:
           - 5434:5432
     env:
       SQLX_VERSION: 0.5.11
-      SQLX_FEATURES: postgres
+      SQLX_FEATURE_NATIVE_TLS: native-tls
+      SQLX_FEATURE_POSTGRES: postgres
     steps:
       - name: Checkout repository
         uses: actions/checkout@v2
@@ -136,7 +138,7 @@ jobs:
         with:
           path: |
             ~/.cargo/bin/sqlx
-          key: ${{ runner.os }}-sqlx-${{ env.SQLX_VERSION }}-${{ env.SQLX_FEATURES }}
+          key: ${{ runner.os }}-sqlx-${{ env.SQLX_VERSION }}-${{ env.SQLX_FEATURE_POSTGRES }}-${{ env.SQLX_FEATURE_NATIVE_TLS }}
 
       - name: Install sqlx-cli 
         uses: actions-rs/cargo@v1
@@ -147,7 +149,7 @@ jobs:
             sqlx-cli
             --force
             --version=${{ env.SQLX_VERSION }}
-            --features=${{ env.SQLX_FEATURES }}
+            --features=${{ env.SQLX_FEATURE_NATIVE_TLS }},${{ env.SQLX_FEATURE_POSTGRES }}
             --no-default-features
             --locked
       - name: Migrate database
@@ -178,7 +180,8 @@ jobs:
           - 6379:6379
     env:
       SQLX_VERSION: 0.5.11
-      SQLX_FEATURES: postgres
+      SQLX_FEATURE_NATIVE_TLS: native-tls
+      SQLX_FEATURE_POSTGRES: postgres
     steps:
       - name: Checkout repository
         uses: actions/checkout@v2
@@ -195,7 +198,7 @@ jobs:
         with:
           path: |
             ~/.cargo/bin/sqlx
-          key: ${{ runner.os }}-sqlx-${{ env.SQLX_VERSION }}-${{ env.SQLX_FEATURES }}
+          key: ${{ runner.os }}-sqlx-${{ env.SQLX_VERSION }}-${{ env.SQLX_FEATURE_POSTGRES }}-${{ env.SQLX_FEATURE_NATIVE_TLS }}
 
       - name: Install sqlx-cli 
         uses: actions-rs/cargo@v1
@@ -206,7 +209,7 @@ jobs:
             sqlx-cli
             --force
             --version=${{ env.SQLX_VERSION }}
-            --features=${{ env.SQLX_FEATURES }}
+            --features=${{ env.SQLX_FEATURE_NATIVE_TLS }},${{ env.SQLX_FEATURE_POSTGRES }}
             --no-default-features
             --locked
       - name: Migrate database
