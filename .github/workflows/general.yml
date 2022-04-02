@@ -21,20 +21,20 @@ jobs:
     runs-on: ubuntu-latest
     services:
       postgres:
-        image: postgres:12
+        image: postgres:14
         env:
           POSTGRES_USER: postgres
           POSTGRES_PASSWORD: password
           POSTGRES_DB: postgres
         ports:
-          - 5432:5432
+          - 5434:5432
       redis:
         image: redis:6
         ports:
           - 6379:6379
     env:
-      SQLX_VERSION: 0.5.7
-      SQLX_FEATURES: postgres
+      SQLX_VERSION: 0.5.11
+      SQLX_FEATURES: native-tls,postgres
     steps:
       - name: Checkout repository
         uses: actions/checkout@v2
@@ -109,16 +109,16 @@ jobs:
     runs-on: ubuntu-latest
     services:
       postgres:
-        image: postgres:12
+        image: postgres:14
         env:
           POSTGRES_USER: postgres
           POSTGRES_PASSWORD: password
           POSTGRES_DB: postgres
         ports:
-          - 5432:5432
+          - 5434:5432
     env:
-      SQLX_VERSION: 0.5.7
-      SQLX_FEATURES: postgres
+      SQLX_VERSION: 0.5.11
+      SQLX_FEATURES: native-tls,postgres
     steps:
       - name: Checkout repository
         uses: actions/checkout@v2
@@ -165,20 +165,20 @@ jobs:
     runs-on: ubuntu-latest
     services:
       postgres:
-        image: postgres:12
+        image: postgres:14
         env:
           POSTGRES_USER: postgres
           POSTGRES_PASSWORD: password
           POSTGRES_DB: postgres
         ports:
-          - 5432:5432
+          - 5434:5432
       redis:
         image: redis:6
         ports:
           - 6379:6379
     env:
-      SQLX_VERSION: 0.5.7
-      SQLX_FEATURES: postgres
+      SQLX_VERSION: 0.5.11
+      SQLX_FEATURES: native-tls,postgres
     steps:
       - name: Checkout repository
         uses: actions/checkout@v2
